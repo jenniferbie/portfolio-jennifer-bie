@@ -20,7 +20,7 @@
     position: relative;
     overflow-x: hidden;
   }
-  /* Fundo mapa do mundo suave */
+  
   body::before {
     content: "";
     position: fixed;
@@ -124,7 +124,6 @@
     fill: white;
   }
 
-  /* Ferramentas e Tecnologias - fundo transparente para mostrar o mapa */
   .ferramentas {
     background: rgba(255, 255, 255, 0.4);
     border-left: 6px solid #00b894;
@@ -178,7 +177,6 @@
     text-align: center;
   }
 
-  /* Habilidades - mesmo estilo transparente */
   .habilidades {
     background: rgba(255, 255, 255, 0.4);
     border-left: 6px solid #00b894;
@@ -217,7 +215,6 @@
     left: 0;
   }
 
-  /* Projetos */
   .projects-section h2 {
     font-weight: 700;
     font-size: 2.2rem;
@@ -270,22 +267,60 @@
     color: #506d7b;
     text-align: center;
     flex-grow: 1;
+    margin-bottom: 0.5rem;
   }
-  .project a {
-    margin-top: 1.2rem;
-    background-color: #00b894;
-    color: white;
-    text-decoration: none;
-    padding: 0.55rem 1.5rem;
-    border-radius: 30px;
+
+  /* NOVOS ESTILOS ADICIONADOS */
+  .tech-badge {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+
+  .tech-badge span {
+    background: rgba(0,184,148,0.15);
+    color: #007a4d;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
     font-weight: 600;
-    box-shadow: 0 6px 12px rgba(0, 184, 148, 0.4);
-    transition: background-color 0.3s ease, transform 0.25s ease;
+  }
+
+  .ver-mais {
+    background: none;
+    border: none;
+    color: #00b894;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    margin-top: -0.5rem;
     display: inline-block;
   }
-  .project a:hover {
-    background-color: #018e67;
-    transform: scale(1.05);
+
+  .ver-mais:hover {
+    text-decoration: underline;
+  }
+
+  .methodology {
+    display: none;
+    font-size: 0.9rem;
+    text-align: left;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-top: 1px dashed #00b894;
+    width: 100%;
+  }
+
+  .methodology ul {
+    padding-left: 1.2rem;
+  }
+
+  .methodology li {
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
   }
 
   footer {
@@ -298,7 +333,6 @@
     letter-spacing: 0.4px;
   }
 
-  /* Modal zoom imagem */
   .modal {
     display: none;
     position: fixed;
@@ -435,42 +469,83 @@
     <h2>Meus Projectos</h2>
     <div class="projects">
       <div class="project">
-        <img src="loca.jpeg" alt="Projeto Imagem 1" data-zoom="loca.jpeg" />
-        <h3>Projeto Imagem 1</h3>
-        <p>Mapeamento de zonas urbanas em expansão com análise espacial.</p>
+        <img src="loca.jpeg" alt="Mapa de Localização do Distrito de Sussundenga" data-zoom="loca.jpeg" />
+        <h3>Mapa de Localização do Distrito de Sussundenga</h3>
+        <div class="tech-badge">
+          <span>QGIS</span>
+          <span>Geoprocessamento</span>
+          <span>Dados Vetoriais</span>
+        </div>
+        <p>Mapa administrativo mostrando a localização geográfica do Distrito de Sussundenga na Província de Manica.</p>
+        <button class="ver-mais">Ver metodologia</button>
+        <div class="methodology">
+          <strong>Metodologia:</strong>
+          <ul>
+            <li><strong>Dados:</strong> Limites administrativos do INE (2022), estradas do OpenStreetMap</li>
+            <li><strong>Processos:</strong> Georreferenciamento, ajuste de projeção (WGS84), simbologia categorizada</li>
+            <li><strong>Análises:</strong> Cálculo de áreas, densidade populacional</li>
+          </ul>
+        </div>
       </div>
+
       <div class="project">
-        <img src="ndvi.jpeg" alt="Projeto Imagem 2" data-zoom="ndvi.jpeg" />
-        <h3>Projeto Imagem 2</h3>
-        <p>Análise multicritério para seleção de locais para construção.</p>
+        <img src="ndvi.jpeg" alt="NDVI Médio Anual – Sussundenga, 2022" data-zoom="ndvi.jpeg" />
+        <h3>NDVI Médio Anual – Sussundenga, 2022</h3>
+        <div class="tech-badge">
+          <span>QGIS</span>
+          <span>Landsat 8</span>
+          <span>Análise Espectral</span>
+        </div>
+        <p>Mapa de Índice de Vegetação por Diferença Normalizada para análise de cobertura vegetal.</p>
+        <button class="ver-mais">Ver metodologia</button>
+        <div class="methodology">
+          <strong>Metodologia:</strong>
+          <ul>
+            <li><strong>Dados:</strong> Imagens Landsat 8 (2022), máscara de nuvens</li>
+            <li><strong>Processos:</strong> Cálculo NDVI, classificação de densidade vegetal</li>
+            <li><strong>Ferramentas:</strong> Plugin Semi-Automatic Classification</li>
+          </ul>
+        </div>
       </div>
+
       <div class="project">
-        <img src="image.png" alt="Projeto Imagem 3" data-zoom="image.png" />
-        <h3>Projeto Imagem 3</h3>
-        <p>Identificação de áreas de risco para incêndios florestais.</p>
+        <img src="image.png" alt="Análise de Proximidade às Infraestruturas" data-zoom="image.png" />
+        <h3>Análise de Proximidade às Infraestruturas</h3>
+        <div class="tech-badge">
+          <span>QGIS</span>
+          <span>Análise Espacial</span>
+          <span>Buffer</span>
+        </div>
+        <p>Análise de acessibilidade a serviços essenciais no distrito.</p>
+        <button class="ver-mais">Ver metodologia</button>
+        <div class="methodology">
+          <strong>Metodologia:</strong>
+          <ul>
+            <li><strong>Dados:</strong> Localização de escolas, centros de saúde (INE 2023)</li>
+            <li><strong>Processos:</strong> Análise de buffers (500m, 1km, 2km), sobreposição espacial</li>
+            <li><strong>Saídas:</strong> Mapas de áreas prioritárias para intervenção</li>
+          </ul>
+        </div>
       </div>
+
       <div class="project">
-        <img src="mapa2.png" alt="Projeto Imagem 4" data-zoom="mapa2.png" />
-        <h3>Projeto Imagem 4</h3>
-        <p>Mapeamento da cobertura do solo e uso sustentável da terra.</p>
-      </div>
-      <div class="project">
-        <img src="imagens/github-projeto1.jpg" alt="GitHub Projeto 1" data-zoom="imagens/github-projeto1.jpg" />
-        <h3>Leaflet.js</h3>
-        <p>Biblioteca open source para mapas interativos.</p>
-        <a href="https://github.com/Leaflet/Leaflet" target="_blank" rel="noopener noreferrer">Ver projecto</a>
-      </div>
-      <div class="project">
-        <img src="loca.jpeg" alt="GitHub Projeto 2" data-zoom="loca.jpeg" />
-        <h3>OpenLayers</h3>
-        <p>Framework para visualização de dados geoespaciais na web.</p>
-        <a href="https://github.com/openlayers/openlayers" target="_blank" rel="noopener noreferrer">Ver projecto</a>
-      </div>
-      <div class="project">
-        <img src="ndvi.jpeg" alt="GitHub Projeto 3" data-zoom="ndvi.jpeg" />
-        <h3>Chart.js</h3>
-        <p>Biblioteca para gráficos dinâmicos, usada em visualizações SIG.</p>
-        <a href="https://github.com/chartjs/Chart.js" target="_blank" rel="noopener noreferrer">Ver projecto</a>
+        <img src="mapa2.png" alt="Localização da Cidade de Maputo" data-zoom="mapa2.png" />
+        <h3>Localização da Cidade de Maputo</h3>
+        <div class="tech-badge">
+          <span>QGIS</span>
+          <span>Cartografia</span>
+          <span>Layout</span>
+        </div>
+        <p>Mapa de referência da capital de Moçambique com elementos cartográficos.</p>
+        <button class="ver-mais">Ver metodologia</button>
+        <div class="methodology">
+          <strong>Metodologia:</strong>
+          <ul>
+            <li><strong>Dados:</strong> Limites municipais, rede viária principal</li>
+            <li><strong>Elementos:</strong> Escala gráfica, rosa dos ventos, legenda hierarquizada</li>
+            <li><strong>Técnicas:</strong> Harmonização cromática, hierarquia visual</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -485,32 +560,39 @@
 </div>
 
 <script>
+  // Modal para zoom de imagens
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
 
-  // Adiciona evento de clique a todas as imagens com data-zoom
   document.querySelectorAll('img[data-zoom]').forEach(img => {
-    img.style.cursor = 'zoom-in';
     img.addEventListener('click', function() {
       const imgSrc = this.getAttribute('data-zoom') || this.src;
       modalImg.src = imgSrc;
       modal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Desabilita scroll
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  // Fecha o modal ao clicar nele
   modal.addEventListener('click', function() {
     modal.classList.remove('active');
-    document.body.style.overflow = ''; // Habilita scroll
+    document.body.style.overflow = '';
   });
 
-  // Fecha o modal com a tecla ESC
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
       modal.classList.remove('active');
-      document.body.style.overflow = ''; // Habilita scroll
+      document.body.style.overflow = '';
     }
+  });
+
+  // Funcionalidade "Ver metodologia"
+  document.querySelectorAll('.ver-mais').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const methodology = this.nextElementSibling;
+      methodology.style.display = methodology.style.display === 'block' ? 'none' : 'block';
+      this.textContent = methodology.style.display === 'block' ? 'Ver menos' : 'Ver metodologia';
+    });
   });
 </script>
 
